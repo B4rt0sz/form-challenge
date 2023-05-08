@@ -1,22 +1,9 @@
 {
-  "name": "react-typescript-webpack-5-template",
-  "version": "1.0.0",
-  "description": "Webpack 5 template with React 18 with TypeScript 5 using Babel 7, HMR, Sass and PostCSS with a hot dev server and an optimized production build.",
+  "name": "form-challenge",
+  "version": "0.0.1",
+  "description": "form-challenge",
   "author": "Bartosz Szućko",
-  "license": "MIT",
   "main": "index.js",
-  "keywords": [
-    "react",
-    "typescript",
-    "webpack",
-    "webpack 5",
-    "boilerplate",
-    "webpack boilerplate",
-    "react typescript webpack boilerplate",
-    "template",
-    "webpack template",
-    "react typescript webpack template"
-  ],
   "scripts": {
     "start": "webpack serve --config config/webpack.config.js --env env=dev",
     "build": "webpack --config config/webpack.config.js --env env=prod"
@@ -71,9 +58,5 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/B4rt0sz/react-typescript-webpack-5-template.git"
   }
 }
