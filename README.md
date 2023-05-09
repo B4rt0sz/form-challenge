@@ -40,6 +40,12 @@ You can see it immediately by following the link in the `Live demo` section or a
 
 - Now please go to the dist folder `cd dist` and use `npx serve`, now you can use `http://localhost:3000` to view it in the browser.
 
+## NPM and Node versions:
+
+NPM version 9.6.6
+
+Node version: 18.16.0
+
 ## For the project I used:
 
 - HTML
@@ -48,6 +54,11 @@ You can see it immediately by following the link in the `Live demo` section or a
 - TypeScript
 - Webpack
 - React Final Form
+- Axios
+
+## Task took me:
+
+Around 10-12 hours
 
 ## License
 
