@@ -29,7 +29,7 @@ type FormFieldTypes = {
 
 const DishesForm = () => {
   const [successSubmit, setSuccessSubmit] = useState<number | undefined>()
-  const [errorSubmit, setErrorSubmit] = useState<{} | undefined>()
+  const [errorSubmit, setErrorSubmit] = useState<number | undefined>()
 
   const onSubmit = async (values: FormFieldTypes) => {
     try {
@@ -41,10 +41,10 @@ const DishesForm = () => {
       }, 2100)
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        setErrorSubmit({ status: error.response?.status, message: error.message })
+        if (error.response) setErrorSubmit(error.response.status)
         setTimeout(() => {
           setErrorSubmit(undefined)
-        }, 2000)
+        }, 3000)
       }
     }
   }
@@ -54,7 +54,7 @@ const DishesForm = () => {
   return (
     <div className='formContainer'>
       <h1 className='title'>Dish Form</h1>
-      {errorSubmit && <SubmitMessage success={successSubmit} />}
+      {errorSubmit && <SubmitMessage success={successSubmit} error={errorSubmit} />}
       <FinalForm
         onSubmit={onSubmit}
         render={({ handleSubmit, values, invalid }) => (
