@@ -18,3 +18,8 @@ export const minValue = (min: number) => (value: string) =>
 
 export const maxValue = (max: number) => (value: string) =>
   value && Number(value) > max ? `Value cannot be greater than ${max}` : undefined
+
+export const composeValidators =
+  (...validators: any[]) =>
+  (value: string) =>
+    validators.reduce((error, validator) => error || validator(value), undefined)
