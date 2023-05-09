@@ -25,7 +25,7 @@ Clone this repository and npm install:
 ```
 git clone https://github.com/B4rt0sz/form-challenge.git
 cd form-challenge
-npm install
+npm install --force
 ```
 
 ## How to run the app

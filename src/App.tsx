@@ -1,7 +1,11 @@
-function App() {
+import DishesForm from './components/DishesForm'
+
+const App = () => {
   return (
     <div className='wrapper'>
-      <p>Dish Form</p>
+      <div className='container'>
+        <DishesForm />
+      </div>
     </div>
   )
 }
