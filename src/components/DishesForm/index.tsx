@@ -4,14 +4,16 @@ import { Form as FinalForm, Field } from 'react-final-form'
 import { MonitorSelectFieldChanges } from './MonitorFieldChange'
 import axios from 'axios'
 import SubmitMessage from './SubmitMessage'
+import errorIcon from './images/errorIcon.png?as=webp'
 import {
   required,
   requiredSelect,
-  number,
-  alphaNumeric,
-  minValueName,
-  minValue,
-  maxValue,
+  requiredNumber,
+  requiredAlphaNumeric,
+  requiredTime,
+  requiredMinValueName,
+  requiredMinValue,
+  requiredMaxValue,
   composeValidators,
 } from './Validators'
 
@@ -60,25 +62,43 @@ const DishesForm = () => {
             <MonitorSelectFieldChanges />
             <Field
               name='name'
-              validate={composeValidators(required, minValueName(2), alphaNumeric)}
+              validate={composeValidators(required, requiredMinValueName(3), requiredAlphaNumeric)}
             >
               {({ input, meta }) => (
                 <div className='form__field'>
                   <label>Dish Name</label>
-                  <input {...input} type='text' placeholder='Name...' required />
+                  <input
+                    className={meta.error && meta.touched ? 'form__field-input-error' : ''}
+                    {...input}
+                    type='text'
+                    placeholder='Name'
+                    required
+                  />
                   {meta.error && meta.touched && (
-                    <div className='form__field-error'>{meta.error}</div>
+                    <div className='form__field-error'>
+                      <img src={errorIcon} alt='error__icon' />
+                      <p>{meta.error}</p>
+                    </div>
                   )}
                 </div>
               )}
             </Field>
-            <Field name='preparation_time' validate={required}>
+            <Field name='preparation_time' validate={composeValidators(required, requiredTime)}>
               {({ input, meta }) => (
                 <div className='form__field'>
                   <label>Preparation time</label>
-                  <input {...input} type='time' step={1} required />
+                  <input
+                    className={meta.error && meta.touched ? 'form__field-input-error' : ''}
+                    {...input}
+                    type='time'
+                    step={1}
+                    required
+                  />
                   {meta.error && meta.touched && (
-                    <div className='form__field-error'>{meta.error}</div>
+                    <div className='form__field-error'>
+                      <img src={errorIcon} alt='error__icon' />
+                      <p>{meta.error}</p>
+                    </div>
                   )}
                 </div>
               )}
@@ -87,14 +107,21 @@ const DishesForm = () => {
               {({ input, meta }) => (
                 <div className='form__field'>
                   <label>Dish type</label>
-                  <select {...input} required>
+                  <select
+                    className={meta.error && meta.touched ? 'form__field-input-error' : ''}
+                    {...input}
+                    required
+                  >
                     <option />
                     <option value='pizza'>Pizza</option>
                     <option value='soup'>Soup</option>
                     <option value='sandwich'>Sandwich</option>
                   </select>
                   {meta.error && meta.touched && (
-                    <div className='form__field-error'>{meta.error}</div>
+                    <div className='form__field-error'>
+                      <img src={errorIcon} alt='error__icon' />
+                      <p>{meta.error}</p>
+                    </div>
                   )}
                 </div>
               )}
@@ -103,42 +130,60 @@ const DishesForm = () => {
               <>
                 <Field
                   name='no_of_slices'
-                  validate={composeValidators(required, number, minValue(1), maxValue(12))}
+                  validate={composeValidators(
+                    required,
+                    requiredNumber,
+                    requiredMinValue(1),
+                    requiredMaxValue(12)
+                  )}
                 >
                   {({ input, meta }) => (
                     <div className='form__field'>
                       <label>Number of slices</label>
                       <input
+                        className={meta.error && meta.touched ? 'form__field-input-error' : ''}
                         {...input}
                         type='number'
                         min={1}
                         max={12}
-                        placeholder='Number of slices...'
+                        placeholder='1 - 12'
                         required
                       />
                       {meta.error && meta.touched && (
-                        <div className='form__field-error'>{meta.error}</div>
+                        <div className='form__field-error'>
+                          <img src={errorIcon} alt='error__icon' />
+                          <p>{meta.error}</p>
+                        </div>
                       )}
                     </div>
                   )}
                 </Field>
                 <Field
                   name='diameter'
-                  validate={composeValidators(required, number, minValue(1), maxValue(60))}
+                  validate={composeValidators(
+                    required,
+                    requiredNumber,
+                    requiredMinValue(1),
+                    requiredMaxValue(60)
+                  )}
                 >
                   {({ input, meta }) => (
                     <div className='form__field'>
                       <label>Diameter</label>
                       <input
+                        className={meta.error && meta.touched ? 'form__field-input-error' : ''}
                         {...input}
                         type='number'
                         min={1}
                         max={60}
-                        placeholder='Diameter...'
+                        placeholder='1 - 60'
                         required
                       />
                       {meta.error && meta.touched && (
-                        <div className='form__field-error'>{meta.error}</div>
+                        <div className='form__field-error'>
+                          <img src={errorIcon} alt='error__icon' />
+                          <p>{meta.error}</p>
+                        </div>
                       )}
                     </div>
                   )}
@@ -148,21 +193,30 @@ const DishesForm = () => {
             {values.type === 'soup' && (
               <Field
                 name='spiciness_scale'
-                validate={composeValidators(required, number, minValue(1), maxValue(10))}
+                validate={composeValidators(
+                  required,
+                  requiredNumber,
+                  requiredMinValue(1),
+                  requiredMaxValue(10)
+                )}
               >
                 {({ input, meta }) => (
                   <div className='form__field'>
-                    <label>Spiciness scale (1-10)</label>
+                    <label>Spiciness scale</label>
                     <input
+                      className={meta.error && meta.touched ? 'form__field-input-error' : ''}
                       {...input}
                       type='number'
                       min={1}
                       max={10}
-                      placeholder='Spiciness...'
+                      placeholder='1 - 10'
                       required
                     />
                     {meta.error && meta.touched && (
-                      <div className='form__field-error'>{meta.error}</div>
+                      <div className='form__field-error'>
+                        <img src={errorIcon} alt='error__icon' />
+                        <p>{meta.error}</p>
+                      </div>
                     )}
                   </div>
                 )}
@@ -171,28 +225,41 @@ const DishesForm = () => {
             {values.type === 'sandwich' && (
               <Field
                 name='slices_of_bread'
-                validate={composeValidators(required, number, minValue(1), maxValue(30))}
+                validate={composeValidators(
+                  required,
+                  requiredNumber,
+                  requiredMinValue(1),
+                  requiredMaxValue(30)
+                )}
               >
                 {({ input, meta }) => (
                   <div className='form__field'>
                     <label>Slices of bread</label>
                     <input
+                      className={meta.error && meta.touched ? 'form__field-input-error' : ''}
                       {...input}
                       type='number'
                       min={1}
                       max={30}
-                      placeholder='Slices...'
+                      placeholder='1 - 30'
                       required
                     />
                     {meta.error && meta.touched && (
-                      <div className='form__field-error'>{meta.error}</div>
+                      <div className='form__field-error'>
+                        <img src={errorIcon} alt='error__icon' />
+                        <p>{meta.error}</p>
+                      </div>
                     )}
                   </div>
                 )}
               </Field>
             )}
             <div className='form__button'>
-              <button type='submit' disabled={invalid}>
+              <button
+                className={invalid ? 'form__button-disabled' : ''}
+                type='submit'
+                disabled={invalid}
+              >
                 Submit
               </button>
             </div>

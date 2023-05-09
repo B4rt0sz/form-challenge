@@ -3,16 +3,22 @@
 
 :root {
   --default-font: 'Poppins', sans-serif;
-  --light-bgc: #f3f8fe;
-  --light-txt: #262d3d;
-  --light-container: #ffffff;
+  --dark-txt: #262d3d;
+  --light-txt: #ffffff;
+  --main-bgc: #f3f8fe;
+  --light-bgc: #ffffff;
+  --midGrayColor: #c0c0c0;
+  --darkGrayColor: #62697a;
+  --redColor: #e40c0c;
+  --blueColor: #0075ff;
+  --darkBlueColor: #004eaa;
   --drop-shadow: 0px 4px 15px #5c5c5c33;
 }
 
 body {
   font-family: var(--default-font);
   min-height: 100vh;
-  background-color: var(--light-bgc);
+  background-color: var(--main-bgc);
 }
 
 .wrapper {
@@ -22,8 +28,8 @@ body {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-color: var(--light-bgc);
-  color: var(--light-txt);
+  background-color: var(--main-bgc);
+  color: var(--dark-txt);
 }
 
 .container {
@@ -33,31 +39,11 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--light-container);
+  background-color: var(--light-bgc);
   border-radius: 18px;
   box-shadow: var(--drop-shadow);
 
   @media (min-width: 375px) {
     max-width: 375px;
   }
-}
-
-h1 {
-  font-size: 20px;
-  font-weight: 600;
-}
-
-h2 {
-  font-size: 18px;
-  font-weight: 600;
-}
-
-h3 {
-  font-size: 16px;
-  font-weight: 500;
-}
-
-p {
-  font-size: 14px;
-  font-weight: 400;
 }
