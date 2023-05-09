@@ -91,6 +91,10 @@
       justify-content: center;
 
       button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
         width: 280px;
         height: 41px;
         margin-top: 16px;
@@ -102,6 +106,7 @@
         font-weight: 600;
         user-select: none;
         cursor: pointer;
+
         @media (hover: hover) and (pointer: fine) {
           &:hover {
             transition: 0.3s ease;

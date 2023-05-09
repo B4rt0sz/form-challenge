@@ -5,6 +5,7 @@ import { MonitorSelectFieldChanges } from './MonitorFieldChange'
 import axios from 'axios'
 import SubmitMessage from './SubmitMessage'
 import errorIcon from './images/errorIcon.png?as=webp'
+import Spinner from './Spinner'
 import {
   required,
   requiredSelect,
@@ -30,6 +31,7 @@ type FormFieldTypes = {
 const DishesForm = () => {
   const [successSubmit, setSuccessSubmit] = useState<number | undefined>()
   const [errorSubmit, setErrorSubmit] = useState<number | undefined>()
+  const [isLoading, setIsLoading] = useState<true | false>(false)
 
   const onSubmit = async (values: FormFieldTypes) => {
     try {
@@ -38,10 +40,12 @@ const DishesForm = () => {
       setTimeout(() => {
         setSuccessSubmit(undefined)
         setErrorSubmit(undefined)
-      }, 2100)
+        setIsLoading(false)
+      }, 2200)
     } catch (error) {
       if (axios.isAxiosError(error)) {
         if (error.response) setErrorSubmit(error.response.status)
+        setIsLoading(false)
         setTimeout(() => {
           setErrorSubmit(undefined)
         }, 3000)
@@ -259,8 +263,16 @@ const DishesForm = () => {
                 className={invalid ? 'form__button-disabled' : ''}
                 type='submit'
                 disabled={invalid}
+                onClick={() => setIsLoading(true)}
               >
-                Submit
+                {isLoading ? (
+                  <>
+                    <Spinner />
+                    <p>Submit</p>
+                  </>
+                ) : (
+                  'Submit'
+                )}
               </button>
             </div>
           </form>
