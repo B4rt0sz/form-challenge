@@ -1,0 +1,29 @@
+.formSuccess {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  &__container {
+    width: 100%;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    color: var(--greenColor);
+
+    h2 {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+}

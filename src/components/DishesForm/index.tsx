@@ -38,7 +38,7 @@ const DishesForm = () => {
       setTimeout(() => {
         setSuccessSubmit(undefined)
         setErrorSubmit(undefined)
-      }, 2000)
+      }, 2100)
     } catch (error) {
       if (axios.isAxiosError(error)) {
         setErrorSubmit({ status: error.response?.status, message: error.message })
