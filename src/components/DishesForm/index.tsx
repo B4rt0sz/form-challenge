@@ -10,6 +10,9 @@ import {
   minValue,
   maxValue,
 } from './Validators'
+import axios from 'axios'
+
+import { useState } from 'react'
 
 type FormFieldTypes = {
   name: string
@@ -40,17 +43,38 @@ const WhenFieldChanges = ({ field, becomes, set, to }: any) => (
 )
 
 const DishesForm = () => {
-  const onSubmit = async (values: FormFieldTypes) => console.log(values)
+  const [successMessage, setSuccessMessage] = useState<{} | undefined>()
+  const [errorMessage, setErrorMessage] = useState<{} | undefined>()
+
+  const onSubmit = async (values: FormFieldTypes) => {
+    try {
+      const response = await axios.post(process.env.DISH_API ?? '', values)
+      setSuccessMessage(response.status)
+      setTimeout(() => {
+        setSuccessMessage(undefined)
+        setErrorMessage(undefined)
+      }, 2000)
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        setErrorMessage({ status: error.response?.status, message: error.message })
+        setTimeout(() => {
+          setErrorMessage(undefined)
+        }, 2000)
+      }
+    }
+  }
 
   const composeValidators =
     (...validators: any[]) =>
     (value: string) =>
       validators.reduce((error, validator) => error || validator(value), undefined)
 
+  if (successMessage === 200) return <p>Success! The dish was submitted.</p>
+
   return (
     <div className='formContainer'>
       <h1>Dish Form</h1>
-
+      {errorMessage && <p>Error! Something go wrong.</p>}
       <FinalForm
         onSubmit={onSubmit}
         render={({ handleSubmit, values, invalid }) => (
