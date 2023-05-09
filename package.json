@@ -1,22 +1,9 @@
 {
-  "name": "react-typescript-webpack-5-template",
-  "version": "1.0.0",
-  "description": "Webpack 5 template with React 18 with TypeScript 5 using Babel 7, HMR, Sass and PostCSS with a hot dev server and an optimized production build.",
+  "name": "form-challenge",
+  "version": "0.1.0",
+  "description": "form-challenge",
   "author": "Bartosz Szućko",
-  "license": "MIT",
   "main": "index.js",
-  "keywords": [
-    "react",
-    "typescript",
-    "webpack",
-    "webpack 5",
-    "boilerplate",
-    "webpack boilerplate",
-    "react typescript webpack boilerplate",
-    "template",
-    "webpack template",
-    "react typescript webpack template"
-  ],
   "scripts": {
     "start": "webpack serve --config config/webpack.config.js --env env=dev",
     "build": "webpack --config config/webpack.config.js --env env=prod"
@@ -32,6 +19,7 @@
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",
+    "@types/react-final-form-listeners": "^1.0.0",
     "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/eslint-plugin": "^5.59.2",
     "@typescript-eslint/parser": "^5.59.2",
@@ -68,12 +56,13 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.21.5",
+    "axios": "^1.4.0",
+    "confetti-explosion-react": "^0.1.2",
+    "final-form": "^4.20.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-final-form": "^6.5.9",
+    "react-final-form-listeners": "^1.0.3",
     "react-router-dom": "^6.11.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/B4rt0sz/react-typescript-webpack-5-template.git"
   }
 }

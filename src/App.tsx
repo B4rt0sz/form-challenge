@@ -1,18 +1,12 @@
-import logo from '../public/logo.svg'
+import DishesForm from './components/DishesForm'
 
-function App() {
-  const text =
-    'Webpack 5 boilerplate with React 18 with TypeScript 5 using Babel 7, HMR, Sass and PostCSS with a hot dev server and an optimized production build.'
-  const reminder = 'Remember to add .env.development and .env.production to your .gitignore!'
-
+const App = () => {
   return (
-    <>
-      <section className='webpack'>
-        <p className='info'>{text}</p>
-        <img src={logo} alt='webpackLogo' />
-        <p className='reminder'>{reminder}</p>
-      </section>
-    </>
+    <div className='wrapper'>
+      <div className='container'>
+        <DishesForm />
+      </div>
+    </div>
   )
 }
 

@@ -1,21 +1,50 @@
 @import './reset';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-.webpack {
-  box-sizing: border-box;
+:root {
+  --default-font: 'Poppins', sans-serif;
+  --dark-txt: #262d3d;
+  --light-txt: #ffffff;
+  --main-bgc: #f3f8fe;
+  --light-bgc: #ffffff;
+  --midGrayColor: #c0c0c0;
+  --darkGrayColor: #62697a;
+  --redColor: #e40c0c;
+  --blueColor: #0075ff;
+  --darkBlueColor: #004eaa;
+  --greenColor: #008a5c;
+  --drop-shadow: 0px 4px 15px #5c5c5c33;
+}
+
+body {
+  font-family: var(--default-font);
   min-height: 100vh;
-  background-color: #000;
-  padding: 5%;
+  background-color: var(--main-bgc);
+}
 
-  color: #fff;
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--main-bgc);
+  color: var(--dark-txt);
+}
 
-  .info {
-    font-size: 2rem;
-    text-align: center;
-  }
+.container {
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light-bgc);
+  border-radius: 18px;
+  box-shadow: var(--drop-shadow);
 
-  .reminder {
-    color: red;
-    font-size: 1.5rem;
-    text-align: center;
+  @media (min-width: 375px) {
+    max-width: 375px;
   }
 }
